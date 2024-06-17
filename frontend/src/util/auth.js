@@ -35,4 +35,5 @@ export function checkAuthLoader() {
   if (!token) {
     return redirect('/auth');
   }
+  return null;
 }
