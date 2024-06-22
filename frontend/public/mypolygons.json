@@ -1,0 +1,22 @@
+{
+  "polygon_name": {
+    "massege": "this is the polygon massege.",
+    "color": "blue",
+    "origin": [34.034, 23.404],
+    "shape": [
+      [23, 234],
+      [23, 345],
+      [32, 54]
+    ]
+  },
+  "second_polygon_name": {
+    "massege": "this is the polygon massege.",
+    "color": "#00ff00",
+    "origin": [34.034, 23.404],
+    "shape": [
+      [23, 234],
+      [23, 345],
+      [32, 54]
+    ]
+  }
+}
