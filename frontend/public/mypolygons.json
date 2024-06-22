@@ -1,8 +1,9 @@
 {
   "polygon_name": {
+    "title": "UNKNOWN",
     "massege": "this is the polygon massege.",
     "color": "blue",
-    "origin": [34.034, 23.404],
+    "origin": [23, 23],
     "shape": [
       [23, 23],
       [23, 34],
@@ -10,9 +11,10 @@
     ]
   },
   "second_polygon_name": {
-    "massege": "this is the polygon massege.",
+    "title": "UK",
+    "massege": "this is the polygon massege2.",
     "color": "#00ff00",
-    "origin": [34.034, 23.404],
+    "origin": [51.560339, -0.394009],
     "shape": [
       [51.560339, -0.394009],
       [51.462906, -0.466893],
@@ -21,9 +23,10 @@
     ]
   },
   "isr_polygon": {
+    "title": "IL",
     "massege": "this is the poly of Israel! 🇮🇱",
     "color": "#00ff00",
-    "origin": [34.034, 23.404],
+    "origin": [33.104427, 35.102861],
     "shape": [
       [33.104427, 35.102861],
       [33.132032, 35.542601],

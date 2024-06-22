@@ -1,12 +1,18 @@
 import React from "react";
 import PageContent from "../components/PageContent";
-import { MapContainer, TileLayer, Polygon, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Polygon,
+  Popup,
+  Tooltip,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import DraggableMarker from "../components/DraggableMarker";
 import useDummyJsonFetch from "../hooks/useDummyJsonFetch";
 
 function MapPage() {
-  const center = { lat: 51.505, lng: -0.09 };
+  const center = { lat: 33.104427, lng: 35.102861 };
   const jsonUrl = "mypolygons.json";
   const {
     data: polygonData,
@@ -22,6 +28,14 @@ function MapPage() {
         pathOptions={{ color: "purple" }}
         positions={value.shape}
       >
+        <Tooltip
+          direction="top"
+          position={{ lat: value.origin[0], lng: value.origin[1] }}
+          opacity={1}
+          permanent
+        >
+          {value.title} ,[{value.origin}]
+        </Tooltip>
         <Popup minWidth={400}>
           <h1>{value.massege}</h1>
         </Popup>
@@ -32,7 +46,7 @@ function MapPage() {
   if (polygonError)
     return (
       <>
-        <h1>Error loading the polygons, Error: </h1>
+        <h3>Error loading the polygons, Error: </h3>
         <p>{String(polygonError)}</p>
       </>
     );
@@ -40,11 +54,9 @@ function MapPage() {
   polygonData && console.log(polygonData);
   return (
     <PageContent title="This is a map!">
-      {/* <ul>{polyList}</ul> */}
-
       <MapContainer
         center={[center.lat, center.lng]}
-        zoom={13}
+        zoom={6}
         scrollWheelZoom={true}
       >
         {polyList}
