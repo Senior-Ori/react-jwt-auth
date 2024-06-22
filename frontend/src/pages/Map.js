@@ -1,6 +1,6 @@
 import React from "react";
 import PageContent from "../components/PageContent";
-import { MapContainer, TileLayer, Polygon } from "react-leaflet";
+import { MapContainer, TileLayer, Polygon, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import DraggableMarker from "../components/DraggableMarker";
 import useDummyJsonFetch from "../hooks/useDummyJsonFetch";
@@ -21,7 +21,11 @@ function MapPage() {
         key={crypto.randomUUID()}
         pathOptions={{ color: "purple" }}
         positions={value.shape}
-      />
+      >
+        <Popup minWidth={400}>
+          <h1>{value.massege}</h1>
+        </Popup>
+      </Polygon>
     ));
 
   if (polygonIsLoading) return <div>Loading...</div>;
