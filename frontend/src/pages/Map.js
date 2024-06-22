@@ -1,6 +1,6 @@
 import React from "react";
 import PageContent from "../components/PageContent";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, Polygon } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import DraggableMarker from "../components/DraggableMarker";
 import useDummyJsonFetch from "../hooks/useDummyJsonFetch";
@@ -13,6 +13,17 @@ function MapPage() {
     isLoading: polygonIsLoading,
     error: polygonError,
   } = useDummyJsonFetch({ url: jsonUrl });
+
+  const polyList =
+    polygonData &&
+    Object.entries(polygonData).map(([key, value]) => (
+      <Polygon
+        key={crypto.randomUUID()}
+        pathOptions={{ color: "purple" }}
+        positions={value.shape}
+      />
+    ));
+
   if (polygonIsLoading) return <div>Loading...</div>;
   if (polygonError)
     return (
@@ -25,11 +36,14 @@ function MapPage() {
   polygonData && console.log(polygonData);
   return (
     <PageContent title="This is a map!">
+      {/* <ul>{polyList}</ul> */}
+
       <MapContainer
         center={[center.lat, center.lng]}
         zoom={13}
         scrollWheelZoom={true}
       >
+        {polyList}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
