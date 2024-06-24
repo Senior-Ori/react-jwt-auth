@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import PageContent from "../components/PageContent";
 import {
   MapContainer,
@@ -6,9 +7,13 @@ import {
   Polygon,
   Popup,
   Tooltip,
+  FeatureGroup,
 } from "react-leaflet";
+import { EditControl } from "react-leaflet-draw";
 import "leaflet/dist/leaflet.css";
+import "leaflet-draw/dist/leaflet.draw.css";
 import DraggableMarker from "../components/DraggableMarker";
+
 import useDummyJsonFetch from "../hooks/useDummyJsonFetch";
 
 function MapPage() {
@@ -74,11 +79,28 @@ function MapPage() {
     <PageContent title="This is a map!">
       <MapContainer
         id="map-container"
-        style={{ borderRadius: "1rem" }}
+        style={{ height: "100vh", width: "100%", borderRadius: "1rem" }}
         center={[center.lat, center.lng]}
         zoom={6}
         scrollWheelZoom={true}
       >
+        <FeatureGroup>
+          <EditControl
+            // textMode={textMode}
+            position="bottomleft"
+            // onEdited={_onEdited}
+            // onCreated={_onCreated}
+            // onDeleted={_onDeleted}
+            draw={{
+              rectangle: false,
+              circle: false,
+              circlemarker: false,
+              marker: true,
+              polyline: true,
+              polygon: true,
+            }}
+          />
+        </FeatureGroup>
         {polyList}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
